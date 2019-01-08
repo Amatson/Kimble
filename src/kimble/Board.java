@@ -19,5 +19,8 @@ public class Board {
 		PURPLE*/ 
 		// Rest of the colors are to be added.
 	}
+	
+	
+	
 
 }
