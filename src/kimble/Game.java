@@ -66,6 +66,12 @@ public class Game {
 		return getPlayers().get(color);
 		
 	}
-	
+
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
+
 
 }
