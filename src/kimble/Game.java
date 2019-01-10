@@ -35,20 +35,20 @@ public class Game {
 	
 	
 	// Game class constructor
-	public Game() {
+	public Game(int size) {
 		// In final state, Game constructor takes the number of players and sets colors accordingly
-		
+		this.board = new Board(4);
 		this.players = new HashMap<Colors, Player>();
-		Player redPlayer = new Player(Colors.RED);
-		Player bluePlayer = new Player(Colors.BLUE);
-		Player greenPlayer = new Player(Colors.GREEN);
-		Player yellowPlayer = new Player(Colors.YELLOW);
+		Player redPlayer = new Player(Colors.RED, this.board);
+		Player bluePlayer = new Player(Colors.BLUE, this.board);
+		Player greenPlayer = new Player(Colors.GREEN, this.board);
+		Player yellowPlayer = new Player(Colors.YELLOW, this.board);
 		this.players.put(Colors.RED, redPlayer);
 		this.players.put(Colors.BLUE, bluePlayer);
 		this.players.put(Colors.GREEN, greenPlayer);
 		this.players.put(Colors.YELLOW, yellowPlayer);
-		this.board = new Board(this.players.size());
-
+		
+		
 	}
 
 

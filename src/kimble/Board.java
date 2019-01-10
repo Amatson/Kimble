@@ -10,7 +10,9 @@ public class Board {
 	// Board is the place to store the locations of the tokens.
 
 	private int boardSize; // Board size is practically the number of players. This is to enable different kimble versions
-	private ArrayList<Field> fields;
+	private ArrayList<Field> fields = new ArrayList<Field>();
+	// MEMO TO SELF! Remember to initialize arraylist before adding objects!
+
 	
 	public Board(int size) {
 		this.setBoardSize(size);
@@ -58,7 +60,7 @@ public class Board {
 		}
 		return null;
 	}
-
+	
 	
 	
 	/*

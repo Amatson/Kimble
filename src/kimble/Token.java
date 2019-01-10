@@ -3,13 +3,10 @@ package kimble;
 public class Token {
 	
 	private Colors color;
-	// String? location;
 	private boolean movable;
 	private Board board;
 	private Field field;
 	
-	// private ??? location
-	// token has a location on the board
 	
 	public Token(Colors color, Board board) {
 		this.setColor(color);
@@ -22,9 +19,11 @@ public class Token {
 	
 	public void setFieldHome() {
 
-		this.field = board.getFreeHomeField(this.color);
+		this.setField(board.getFreeHomeField(this.color));
 		// TODO: check return value if null
 	}
+	
+	
 
 	public Colors getColor() {
 		return color;
@@ -48,6 +47,16 @@ public class Token {
 		return board;
 	}
 
+	public Field getField() {
+		return field;
+	}
+
+	public void setField(Field field) {
+		field.setToken(this);
+		this.field = field;
+	}
+
+	
 	
 	
 	
