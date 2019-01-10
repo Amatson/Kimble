@@ -14,6 +14,12 @@ public class KimbleTest {
 		assertEquals(4, game.getBoard().getBoardSize());
 		assertEquals(4, game.getPlayerWithColor(Colors.RED).countHomeTokens());
 		assertEquals(Field.Type.HOME, game.getPlayerWithColor(Colors.BLUE).getHomeToken().getField().getType());
+
+		}
+	
+	@Test
+	public void testClassMethods() {
+		Game game = new Game(4);
 		for(int i = 0; i < 10; i++) {
 			int naks = game.naks();
 			assertTrue("Error, naks is too high", naks < 7);
