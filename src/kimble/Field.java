@@ -3,6 +3,13 @@ package kimble;
 
 public class Field {
 	
+	/*
+	 * In Kimble, a token can be in three different fields:
+	 * Normal: an edible field, also a mine. Token can move freely in normal fields.
+	 * Goal: safe fields where token cannot be eaten, sometimes cannot move with any dice number
+	 * Home: safe fields where tokens are returned after eating. Tokens cannot move in homefields.
+	 */
+	
 	public enum Type {
 		NORMAL,
 		GOAL,
@@ -52,11 +59,11 @@ public class Field {
 	public Token getToken() {
 		return token;
 	}
-
 	public void setToken(Token token) {
 		this.token = token;
 	}
-
+	
+	// Test if there is a token on the field.
 	public boolean isVacant() {
 		return(this.token == null);
 	}

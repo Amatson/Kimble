@@ -20,7 +20,19 @@ public class Board {
 	}
 
 	
-	
+	/*
+	 * Token has a field, which can be on different quadrants (player parts of the board, there might be more or less than 4 players)
+	 * Each quadrant has: 
+	 * 		7 "public" fields
+	 * 			1 mine field
+	 * 			6 normal fields
+	 * 		4 goal fields where token is still movable but not attainable by other team tokens
+	 * 		4 home fields, where tokens cannot be moved elsewhere but to mine field
+	 * 
+	 * fields are initialized with the board
+	 * 
+	 * 				
+	 */
 	private void setFields(int size) {
 		for(int i = 0; i < size; i++) {
 			for(int j = 0; j < 4; j++) {
@@ -35,6 +47,8 @@ public class Board {
 				Field f = new Field(this, Colors.values()[i], Field.Type.NORMAL, j);
 				this.fields.add(f);
 			}
+			
+			// TODO: fields needs more identifications, i.e. index number to enable moving with counted steps.
 		}
 	}
 
@@ -62,20 +76,15 @@ public class Board {
 	}
 	
 	
+	public void setMine(Player player) {
+		// TODO: here or with in player class?
+	}
 	
-	/*
-	 * Token has a field, which can be on different quadrants 
-	 * Each quadrant has: 
-	 * 		7 "public" fields
-	 * 			1 mine field
-	 * 			6 normal fields
-	 * 		4 goal fields where token is still movable but not attainable by other team tokens
-	 * 		4 home fields, where tokens cannot be moved elsewhere but to mine field
-	 * 
-	 * fields are initialized with the board
-	 * 
-	 * 				
-	 */
+	
+	public void moveToken(Token token, int steps) {
+		// TODO: Is this what board does?
+	}
+	
 	
 	
 	

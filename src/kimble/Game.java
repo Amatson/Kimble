@@ -11,7 +11,6 @@ import java.util.Random;
  */
 public class Game {
 	
-	
 	private Board board;
 	private HashMap<Colors, Player> players;
 	private int dice = 0;
@@ -40,18 +39,19 @@ public class Game {
 	// Game class constructor
 	public Game(int size) {
 		// In final state, Game constructor takes the number of players and sets colors accordingly
-		this.board = new Board(4);
+		if(size > Colors.values().length) {
+			size = Colors.values().length;
+	        System.out.println(Colors.values().length + " is the maximum amount of players at this moment. Please add more players manually to Colors.java");
+		}
+		this.board = new Board(size);
 		this.players = new HashMap<Colors, Player>();
-		Player redPlayer = new Player(Colors.RED, this.board);
-		Player bluePlayer = new Player(Colors.BLUE, this.board);
-		Player greenPlayer = new Player(Colors.GREEN, this.board);
-		Player yellowPlayer = new Player(Colors.YELLOW, this.board);
-		this.players.put(Colors.RED, redPlayer);
-		this.players.put(Colors.BLUE, bluePlayer);
-		this.players.put(Colors.GREEN, greenPlayer);
-		this.players.put(Colors.YELLOW, yellowPlayer);
 		
+		for(int i = 0; i < size; i++) {
+			Player plr = new Player(Colors.values()[i], this.board);
+			this.players.put(Colors.values()[i], plr);
+		}
 		naks();
+		
 	}
 
 

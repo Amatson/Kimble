@@ -5,11 +5,9 @@ public enum Colors {
 	BLUE,
 	YELLOW,
 	GREEN,
-	RED
-	/*,
+	RED,
 	BLACK,
 	WHITE,
-	PURPLE*/ 
-	// Rest of the colors are to be added.
+	PURPLE 
 	
 }

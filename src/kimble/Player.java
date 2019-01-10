@@ -81,5 +81,14 @@ public class Player {
 		return count;
 	}
 	
+	public int countGoalTokens() {
+		int count = 0;
+		for(Token token : this.tokens) {
+			if(token.getField().getType() == Field.Type.GOAL)
+				count++;
+		}
+		return count;
+	}
+	
 	
 }

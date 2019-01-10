@@ -51,11 +51,21 @@ public class Token {
 		return field;
 	}
 
+	
+	// TODO: this checks if field is vacant. Should this be handled as eating situation?
 	public void setField(Field field) {
-		field.setToken(this);
-		this.field = field;
+		try {
+			if(!field.isVacant())
+				throw new UnsupportedOperationException("Field has already a token.");
+			else {
+				field.setToken(this);
+				this.field = field;
+			}
+		}
+		catch (UnsupportedOperationException e) {
+		    System.err.println("UnsupportedOperationException: " + e.getMessage());
+		}
 	}
-
 	
 	
 	

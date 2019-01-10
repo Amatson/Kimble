@@ -7,26 +7,30 @@ import org.junit.jupiter.api.Test;
 
 public class KimbleTest {
 	
+	public int teams = 7;
+	public int tokens = 4;
+	
 	@Test
 	public void testGameInitialization() {
 		System.out.println("Hello World! This is Kimble testing!");
-		Game game = new Game(4);
-		assertEquals(4, game.getBoard().getBoardSize());
-		assertEquals(4, game.getPlayerWithColor(Colors.RED).countHomeTokens());
+		Game game = new Game(teams);
+		assertEquals(teams, game.getBoard().getBoardSize());
+		assertEquals(tokens, game.getPlayerWithColor(Colors.RED).countHomeTokens());
 		assertEquals(Field.Type.HOME, game.getPlayerWithColor(Colors.BLUE).getHomeToken().getField().getType());
 
 		}
 	
 	@Test
 	public void testClassMethods() {
-		Game game = new Game(4);
-		for(int i = 0; i < 10; i++) {
+		Game game = new Game(teams);
+		for(int i = 0; i < 20; i++) {
 			int naks = game.naks();
 			assertTrue("Error, naks is too high", naks < 7);
 			assertTrue("Error, naks is too low", naks > 0);
 		}
 	
-		
 	}
+	
+	
 
 }
