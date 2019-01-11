@@ -21,7 +21,7 @@ public class KimbleTest {
 		}
 	
 	@Test
-	public void testClassMethods() {
+	public void testNaks() {
 		Game game = new Game(teams);
 		for(int i = 0; i < 20; i++) {
 			int naks = game.naks();
@@ -30,6 +30,13 @@ public class KimbleTest {
 		}
 	
 	}
+	
+//	@Test
+//	public void testMoving() {
+//		Game game = new Game(teams);
+//		
+//
+//	}
 	
 	
 

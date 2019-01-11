@@ -21,6 +21,8 @@ public class Field {
 	private int id; // Field has an id value to tell what is the id of the field with given type
 	private Board board;
 	private Token token;
+	// TODO: For doubled, tripled and quadrupled tokens we might need a list of tokens on field.
+	
 	
 
 	public Field(Board board, Colors color, Type type, int id) {

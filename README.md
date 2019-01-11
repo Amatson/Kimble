@@ -1,7 +1,19 @@
 # Kimble
 
-This project is to initially create a Kimble game logging system, and if things go well, an interactive game where to test different playing strategies with AI player.
+This project aims to create a playable Kimble game that can be played either with other human players or against AI. The ultimate goal is to test different playing strategies with AI players by running numerous games and collecting data for strategy analysis.
 
-This Kimble is played with AS-Kimble rules which can be found (in Finnish) from [RULES](http://kimble.dy.fi/saannot).
+This Kimble is played with AS-Kimble drinking rules which can be found (in Finnish) from [RULES](http://kimble.dy.fi/saannot).
 
-First things first, a playable Kimble e-game. Let's get started!
+
+![alt text][architecture]
+
+
+
+
+
+
+
+
+
+
+[architecture]: architecture.png "Architecture wire frame of java classes"

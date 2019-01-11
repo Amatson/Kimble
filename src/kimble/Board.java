@@ -3,7 +3,8 @@ package kimble;
 import java.util.ArrayList;
 
 /*
- * Board initializes the player locations and colors and logs the locations of the pieces.
+ * Board initializes the player locations and colors 
+ * and logs the locations of the pieces.
  * 
  */
 public class Board {
@@ -53,16 +54,12 @@ public class Board {
 	}
 
 
-
 	public void setBoardSize(int boardSize) {
 		this.boardSize = boardSize;
 	}
-
 	public int getBoardSize() {
 		return boardSize;
 	}
-
-
 
 	public Field getFreeHomeField(Colors color) {
 
@@ -78,12 +75,36 @@ public class Board {
 	
 	public void setMine(Player player) {
 		// TODO: here or with in player class?
+		for(Token token : player.getTokens()) {
+			if(token.getField().getType() == Field.Type.HOME) {
+				token.setField(this.getMineField(player));
+			}
+		}
 	}
 	
 	
+	private Field getMineField(Player player) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	private Field getNextField() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	public void moveToken(Token token, int steps) {
-		// TODO: Is this what board does?
+		
 	}
+	
+	// Same as above, but the steps is taken from this.dice. 
+	// TODO: which is smarter?
+	public void moveToken(Token token) {
+		
+	}
+
 	
 	
 	
