@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class KimbleTest {
 	
-	public int teams = 7;
+	public int teams = 4;
 	public int tokens = 4;
 	
 	@Test
@@ -17,6 +17,8 @@ public class KimbleTest {
 		assertEquals(teams, game.getBoard().getBoardSize());
 		assertEquals(tokens, game.getPlayerWithColor(Colors.RED).countHomeTokens());
 		assertEquals(Field.Type.HOME, game.getPlayerWithColor(Colors.BLUE).getHomeToken().getField().getType());
+		assertEquals(0, game.getBoard().getMineField(game.getPlayerWithColor(Colors.RED)).getId());
+		assertEquals(Field.Type.NORMAL, game.getBoard().getMineField(game.getPlayerWithColor(Colors.RED)).getType());
 
 		}
 	
@@ -31,12 +33,13 @@ public class KimbleTest {
 	
 	}
 	
-//	@Test
-//	public void testMoving() {
-//		Game game = new Game(teams);
-//		
-//
-//	}
+	@Test
+	public void testMoving() {
+		Game game = new Game(teams);
+		assertEquals(0, game.getBoard().getMineField(game.getPlayerWithColor(Colors.RED)).getId());
+		assertEquals(Field.Type.NORMAL, game.getBoard().getMineField(game.getPlayerWithColor(Colors.RED)).getType());
+
+	}
 	
 	
 

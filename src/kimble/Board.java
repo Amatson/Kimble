@@ -48,8 +48,6 @@ public class Board {
 				Field f = new Field(this, Colors.values()[i], Field.Type.NORMAL, j);
 				this.fields.add(f);
 			}
-			
-			// TODO: fields needs more identifications, i.e. index number to enable moving with counted steps.
 		}
 	}
 
@@ -83,13 +81,19 @@ public class Board {
 	}
 	
 	
-	private Field getMineField(Player player) {
-		// TODO Auto-generated method stub
+	public Field getMineField(Player player) {
+		for(Field field : this.fields) {
+			if(field.getType() == Field.Type.NORMAL 
+					&& field.getColor() == player.getColor()
+					&& field.getId() == 0) {
+				return field;
+			}
+		}
 		return null;
 	}
 
 
-	private Field getNextField() {
+	public Field getNextField() {
 		// TODO Auto-generated method stub
 		return null;
 	}
