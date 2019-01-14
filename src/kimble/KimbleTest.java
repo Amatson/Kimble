@@ -25,6 +25,8 @@ public class KimbleTest {
 	@Test
 	public void testNaks() {
 		Game game = new Game(teams);
+		assertTrue("Error, pop'o'matic has not been reset", game.getDice() != 0);
+		assertTrue("Error, pop'o'matic has not been reset to non-six", game.getDice() != 6);
 		for(int i = 0; i < 20; i++) {
 			int naks = game.naks();
 			assertTrue("Error, naks is too high", naks < 7);
@@ -41,6 +43,20 @@ public class KimbleTest {
 
 	}
 	
+	@Test
+	public void testPlayerTurns() {
+		Game game = new Game(4);
+		game.setPlayerInTurn(game.getPlayerWithColor(Colors.RED));
+		game.setNextPlayerInTurn();
+		assertEquals(Colors.BLUE, game.getPlayerInTurn().getColor());
+		game.setNextPlayerInTurn();
+		assertEquals(Colors.YELLOW, game.getPlayerInTurn().getColor());		
+		game.setNextPlayerInTurn();
+		assertEquals(Colors.GREEN, game.getPlayerInTurn().getColor());
+		game.setNextPlayerInTurn();
+		assertEquals(Colors.RED, game.getPlayerInTurn().getColor());		
+		game.setNextPlayerInTurn();
+		assertEquals(Colors.BLUE, game.getPlayerInTurn().getColor());		}
 	
 
 }

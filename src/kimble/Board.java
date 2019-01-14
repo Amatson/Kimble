@@ -93,10 +93,7 @@ public class Board {
 	}
 
 
-	public Field getNextField() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 
 	public void moveToken(Token token, int steps) {

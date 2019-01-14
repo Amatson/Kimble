@@ -14,7 +14,7 @@ public class Game {
 	private Board board;
 	private HashMap<Colors, Player> players;
 	private int dice = 0;
-	
+	private Player playerInTurn = null;
 	
 	/*
 	 * Initial: 
@@ -35,6 +35,14 @@ public class Game {
 	 * 		
 	 */
 	
+	/*
+	 * public void turn()
+	 * 	naks();
+	 * 	getMovableTokens();
+	 * 	askPlayerInput();	
+	 * 
+	 */
+	
 	
 	// Game class constructor
 	public Game(int size) {
@@ -53,10 +61,8 @@ public class Game {
 			this.players.put(Colors.values()[i], plr);
 		}
 		// Perform first naks to give something as previous dice number, do not allow 6 
-		naks();
-		while(this.dice == 6)
-			naks();
-		
+		while(naks() == 6)
+			continue;
 		
 	}
 
@@ -83,6 +89,7 @@ public class Game {
 	 * 
 	 * However, as good players know, technique and skills can alter the 
 	 * probabilities but this is impossible to simulate programmatically.
+	 * 
 	 */
 	public int naks() {
 		// Dice is initialized as 0 in the beginning giving an evenly distributed probability for each dice number.
@@ -118,5 +125,64 @@ public class Game {
 		// Return the new current dice number to caller.
 		return this.dice;
 	}
+	
+	public int getDice() {
+		return this.dice;
+	}
+	
+	// This method returns a list of tokens that can be moved with given step amount
+	public int getMovableTokens(int steps) {
+		// This method could also just use the this.dice value?
+		
+		// DUMMY!!!
+		return 1;
+	}
+	
+	public void setPlayerInTurn(Player player) {
+		this.playerInTurn = player;
+	}
+	
+	public Player getPlayerInTurn() {
+		
+		return this.playerInTurn;
+	}
+	
+	// setStartingPlayer calls naks and gives each player a dice value, the highest number starts.
+	public void setStartingPlayer(Player given) {
+		// This is a blind method for now, meaning that players are not prompted for actions
+		if(given != null)
+			setPlayerInTurn(given);
+		else {
+			HashMap<Colors, Integer> order = new HashMap<Colors, Integer>();
+			for(Player player : this.players.values()) {
+				order.put(player.getColor(), naks());
+			}	
+		
+			
+			
+			// TODO! under construction!!
 
+		}
+		
+		//setPlayerInTurn(starter);
+	}
+	
+	// setNextPlayer method finds the next player in turn and calls setPlayerInTurn
+	public void setNextPlayerInTurn() {
+		try {
+			if (this.playerInTurn == null)
+				throw new UnsupportedOperationException("Starting player has not yet been determined!");
+			else {
+				int i = Colors.valueOf(this.playerInTurn.getColor().toString()).ordinal() + 1;
+				if(i >= this.players.size())
+					i = 0;
+				this.setPlayerInTurn(this.players.get(Colors.values()[i]));
+			}
+		}
+		catch (UnsupportedOperationException e) {
+		    System.err.println("UnsupportedOperationException: " + e.getMessage());			
+		}
+	}
+	
+	
 }

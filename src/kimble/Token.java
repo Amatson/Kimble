@@ -76,6 +76,9 @@ public class Token {
 	}
 	// TODO: this checks if field is vacant. Should this be handled as eating situation?
 
-	
+	public Field getNextField(int steps) {
+//		this.board.getNextField(this.field, steps); //???
+		return null;
+	}
 		
 }
