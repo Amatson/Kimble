@@ -2,6 +2,8 @@ package kimble;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Random;
 
 /*
@@ -148,17 +150,95 @@ public class Game {
 	}
 	
 	// setStartingPlayer calls naks and gives each player a dice value, the highest number starts.
-	public void setStartingPlayer(Player given) {
+	public void initStartingPlayers(Player starter, Player painter) {
 		// This is a blind method for now, meaning that players are not prompted for actions
-		if(given != null)
-			setPlayerInTurn(given);
+		// Method takes player as parameter and is able to set it. This is for analog gaming and for testing purposes.
+		if(starter != null) {
+			setPlayerInTurn(starter);
+			// TODO: Do something with the player who chooses the color first
+		}
 		else {
-			HashMap<Colors, Integer> order = new HashMap<Colors, Integer>();
-			for(Player player : this.players.values()) {
-				order.put(player.getColor(), naks());
-			}	
-		
+			// Create two hashmaps to collect the naks values of players
 			
+			HashMap<Colors, Integer> bigOnes = new HashMap<Colors, Integer>();
+			HashMap<Colors, Integer> smallOnes = new HashMap<Colors, Integer>();	
+			int biggest;
+			int smallest;
+			do {
+				biggest = 0;
+				smallest = 7;				
+				for(Player player : this.players.values()) {
+					int naks = naks();
+					if(naks > biggest) biggest = naks;
+					if(naks < smallest) smallest = naks;
+					bigOnes.put(player.getColor(), naks);
+					smallOnes.put(player.getColor(), naks);
+					// TODO: change this to prompt user input?
+				}
+			}while(biggest == smallest);
+			
+			HashMap<Colors, Integer> bigs = new HashMap<Colors, Integer>();
+			do {
+	        	bigs.clear();
+				Iterator it = bigOnes.entrySet().iterator();
+				while(it.hasNext()) {
+			        HashMap.Entry pair = (HashMap.Entry)it.next();
+			        if((int)pair.getValue() > biggest) {
+			        	bigs.clear();
+			        	bigs.put((Colors)pair.getKey(), (int)pair.getValue());
+			        }
+			        else if((int)pair.getValue() == biggest) {
+			        	bigs.put((Colors)pair.getKey(), (int)pair.getValue());
+			        }
+				}
+				
+				if(bigs.size() > 1) {
+					bigOnes.clear();
+					Iterator it = bigs.entrySet().iterator();
+					biggest = 0;
+					smallest = 7;	
+					while(it.hasNext()) {
+						
+
+						// TODO: THIS IS INCOMPLETE!
+						
+						// TODO: Use this somehow?
+//						for(Player player : this.players.values()) {
+//							int naks = naks();
+//							if(naks > biggest) biggest = naks;
+//							if(naks < smallest) smallest = naks;
+//							bigOnes.put(player.getColor(), naks);
+//							smallOnes.put(player.getColor(), naks);
+//							// TODO: change this to prompt user input?
+//						}
+						
+					}
+
+						
+						
+				}
+				// TODO: WHAT NOW?!
+			}while(bigs.size() > 1);
+			
+			
+			HashMap<Colors, Integer> smalls = new HashMap<Colors, Integer>();
+			do {
+	        	smalls.clear();
+				Iterator it = smallOnes.entrySet().iterator();
+				while(it.hasNext()) {
+			        HashMap.Entry pair = (HashMap.Entry)it.next();
+			        if((int)pair.getValue() < smallest) {
+			        	smalls.clear();
+			        	smalls.put((Colors)pair.getKey(), (int)pair.getValue());
+			        }
+			        else if((int)pair.getValue() == smallest) {
+			        	smalls.put((Colors)pair.getKey(), (int)pair.getValue());
+			        }		        
+				}
+				
+				// TODO: WHAT NOW?!
+				// TODO: COPY FROM ABOVE BIG TINGIE!
+			}while(smalls.size() > 1);
 			
 			// TODO! under construction!!
 
